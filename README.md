@@ -6,8 +6,8 @@ small or big numbers.
 
 For example they can be used to encode a database integer ID or a specific date.
 
-Ex. The date date=2020-01-31T15:01:17.647Z can be passed to a person using this code K62AP58V.
-Ex. Big number 7607118767 can be written as 3HT2YEN
+Ex. ```The date date=2020-01-31T15:01:17.647Z can be passed to a person using this code K62AP58V.```
+Ex. ```Big number 7607118767 can be written as 3HT2YEN```
 
 ## Install
 ```
