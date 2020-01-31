@@ -1,0 +1,19 @@
+{
+  "name": "humanized-codes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/codes.js",
+  "scripts": {
+    "build": "rollup codes.js --file build/codes.js --format umd --name 'humanCodes'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fsvieira/humanized-codes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fsvieira/humanized-codes/issues"
+  },
+  "homepage": "https://github.com/fsvieira/humanized-codes#readme"
+}
