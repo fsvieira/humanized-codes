@@ -1,20 +1,24 @@
-const codeSystem = base => {
+const codeSystem = (base, customizedSymbols) => {
 
     if (base > 36) {
         throw "Base need to be less then 37."
     }
 
-    const symbols = [];
+    const symbols = customizedSymbols || [];
 
-    for (let i = 0; i < base; i++) {
-        if (i < 10) {
-            symbols.push("" + i)
-        }
-        else {
-            const letter = "A".charCodeAt(0) + i - 10;
-            symbols.push(String.fromCharCode(letter));
+    if (!symbols.length) {
+        for (let i = 0; i < base; i++) {
+            if (i < 10) {
+                symbols.push("" + i)
+            }
+            else {
+                const letter = "A".charCodeAt(0) + i - 10;
+                symbols.push(String.fromCharCode(letter));
+            }
         }
     }
+
+    console.log(JSON.stringify(symbols));
 
     return {
         encode: number => {
