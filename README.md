@@ -11,6 +11,11 @@ Ex.
     The date date=2020-01-31T15:01:17.647Z can be passed to a person using this code K62AP58V.
 ```
 
+Ex.
+```
+    A small-big number 20880 can be written as G40
+```
+
 Ex. 
 ```
     Big number 7607118767 can be written as 3HT2YEN
