@@ -52,14 +52,24 @@ const errorSystem = bits => {
     const xor = n => {
         let x = mask;
         
+        let position = 0;
         while (n > 0) {
             const a = mask & n;
             n = n >> bits;
             x = (x ^ a) & mask;
+            position++;
         }
     
         return x;
     }
+
+    const check = number => {
+        const n = number >> bits;
+        const x = number & mask;
+        const c = xor(n);
+
+        return x === c;
+    };
 
     return {
         bootstrap: number => {
@@ -67,12 +77,13 @@ const errorSystem = bits => {
             const result = (number << bits) + x;
             return result;
         },
-        check: number => {
-            const n = number >> bits;
-            const x = number & mask;
-            const c = xor(n);
+        check,
+        decode: number => {
+            if (check(number)) {
+                return number >> bits;
+            }
 
-            return x === c;
+            return null;
         }
     }
 }

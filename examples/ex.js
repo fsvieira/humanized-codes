@@ -56,7 +56,14 @@ console.log("Code: " + code + ", decoded: " + base36.decode(n) + ", " + new Date
         code = 1000 + n;
         const codeError = error5.bootstrap(code);
         const encoded = encode(codeError);
-        console.log("Code: " + code + ", encode: ", encoded, ", decoded: " + decode(encoded), "check: " + error5.check(decode(encoded)));
+        const decoded = decode(encoded);
+        console.log(
+            "Code: ", code, 
+            ", encode: ", encoded, 
+            ", decoded: " + decode(encoded), 
+            ", check: " + error5.check(decoded), 
+            ", real decoded: " + error5.decode(decoded)
+        );
     }
     
 }
@@ -74,7 +81,7 @@ console.log("--- Error check ---");
         const encoded = encode(codeError);
 
         let errors = ""
-        if (Math.random() > 0.5) {
+        if (Math.random() > 0.2) {
             for (let i=0; i<encoded.length; i++) {
                 const coin = Math.random() > 0.5;
 
@@ -96,6 +103,7 @@ console.log("--- Error check ---");
         console.log(
             "Code: " + code + ", encode: ", encoded, 
             ", errors: " + errors + ", decoded: " + decoded, 
+            ", real decoded " + error5.decode(decoded),
             "check: " + check,
             ", is it rigth? ", ((encoded === errors) === check)?'yes':'no'
         );
@@ -117,7 +125,7 @@ console.log("--- Error check ---");
             const encoded = encode(codeError);
 
             let errors = ""
-            if (Math.random() > 0.5) {
+            if (Math.random() > 0.2) {
                 for (let i=0; i<encoded.length; i++) {
                     const coin = Math.random() > 0.5;
 
