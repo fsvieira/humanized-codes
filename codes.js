@@ -18,8 +18,6 @@ const codeSystem = (base, customizedSymbols) => {
         }
     }
 
-    console.log(JSON.stringify(symbols));
-
     return {
         encode: number => {
             let code = "";
@@ -44,8 +42,45 @@ const codeSystem = (base, customizedSymbols) => {
     };
 }
 
+const errorSystem = bits => {
+    if (bits === 0) {
+        throw "Can't detect any erros with 0 bits.";
+    }
+
+    const mask = (1 << bits) - 1;
+
+    const xor = n => {
+        let x = mask;
+        
+        while (n > 0) {
+            const a = mask & n;
+            n = n >> bits;
+            x = (x ^ a) & mask;
+        }
+    
+        return x;
+    }
+
+    return {
+        bootstrap: number => {
+            const x = xor(number);
+            const result = (number << bits) + x;
+            return result;
+        },
+        check: number => {
+            const n = number >> bits;
+            const x = number & mask;
+            const c = xor(n);
+
+            return x === c;
+        }
+    }
+}
+
 module.exports = {
     codeSystem,
-    base36: codeSystem(36)
+    errorSystem,
+    base36: codeSystem(36),
+    error5: errorSystem(5) 
 }
 
